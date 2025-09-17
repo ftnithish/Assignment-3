@@ -1,0 +1,43 @@
+<template>
+    <lightning-card title="Dynamic Object Explorer" icon-name="custom:custom63">
+
+        <div class="slds-grid slds-gutter slds-p-around_medium">
+<div class="slds-col">
+<lightning-combobox
+    label= "Selected Object"
+    value={selectedObject}
+    options={objectOptions}
+    onchange={handleObjectChange}>
+</lightning-combobox>
+</div>
+<div class="slds-col">
+    <lightning-input type="search" label="Search" onChange={handleSearch}>
+</div>
+        </div>
+
+        <div class="slds-p-around_medium">
+            <lightning-dual-listbox
+                label="selected field"
+                source-label="Available"
+                selected-label="Selected"
+                value={selectedField}
+                options={fieldOptions}
+                onchange={handleFieldChange}>
+            </lightning-dual-listbox>
+        </div>
+<div class="slds-p-around_medium">
+    <lightning-datatable
+    key-field="id"
+    data={data}
+    columns={columns}
+    onrowaction={handleRowAction}
+    ></lightning-datatable>
+
+</div>
+<div class="slds-p-around_medium slds-grid slds-grid_align-center">
+    <lightning-button label="Previous" onclick={prevPage}></lightning-button>
+    <span class="slds-p-horizontal_medium">Page {pageNumber}</span>
+    <lightning-button label="Next" onclick={nextPage}></lightning-button>
+</div>
+    </lightning-card>
+</template>
